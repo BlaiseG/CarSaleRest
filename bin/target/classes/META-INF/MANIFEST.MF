@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-Title: CarSale
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.carsale
+Build-Jdk: 1.7.0_45
+Built-By: Balazs_Gerendai
+Created-By: Maven Integration for Eclipse
+
