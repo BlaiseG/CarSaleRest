@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
+import org.springframework.hateoas.UriTemplate;
+import org.springframework.hateoas.hal.CurieProvider;
+import org.springframework.hateoas.hal.DefaultCurieProvider;
 
 import javax.sql.DataSource;
 
@@ -14,8 +17,15 @@ import javax.sql.DataSource;
 @EnableAutoConfiguration
 public class CarSaleApplication {
 
+    public static String CURIE_NAMESPACE = "carsale";
+
     public static void main(String[] args) {
         SpringApplication.run(CarSaleApplication.class, args);
+    }
+
+    public @Bean
+    CurieProvider curieProvider() {
+        return new DefaultCurieProvider(CURIE_NAMESPACE, new UriTemplate("/docs/{rel}.html"));
     }
 
     @Bean
