@@ -31,6 +31,13 @@ public class CarsCustomController implements ResourceProcessor<RepositorySearche
     public ResponseEntity<Resources<Resource<Car>>> findBMW(Car filterCriteria, Pageable pageable, PersistentEntityResourceAssembler entityAssembler) {
 
         Page<Car> bmw = carRepository.findByModelName("BMW", pageable);
+        // Adds the "_self" link to findBMW endpoint
+        /**
+         * "_links": {
+            "self": {
+            "href": "http://localhost:8080/api/cars/search/findBMW"
+         },
+         */
         @SuppressWarnings({ "unchecked", "rawtypes" })
         PagedResources<Resource<Car>> resource = pagedAssembler.toResource(bmw,
                 (ResourceAssembler) entityAssembler);
@@ -39,6 +46,13 @@ public class CarsCustomController implements ResourceProcessor<RepositorySearche
     }
 
 
+    /*
+        Adds the findBMW to: http://localhost:8080/api/cars/search as
+       "carsale:findBMW": {
+         "href": "http://localhost:8080/api/cars/search/findBMW"
+        }
+    },
+     */
     @Override
     public RepositorySearchesResource process(RepositorySearchesResource resource) {
         if(Car.class.equals(resource.getDomainType())) {
