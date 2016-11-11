@@ -1,9 +1,10 @@
 package com.carsale.repository;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.carsale.model.Car;
 
 public interface CarJPARepositoryCustom {
-	List<Car> findAllCarsByModelNameCustom(String modelName);
+	Page<Car> findAllCarsByModelNameCustom(String modelName, Pageable pageable);
 }

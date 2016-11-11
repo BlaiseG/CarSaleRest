@@ -25,7 +25,7 @@ public class CarSaleApplication {
 
     public @Bean
     CurieProvider curieProvider() {
-        return new DefaultCurieProvider(CURIE_NAMESPACE, new UriTemplate("/docs/{rel}.html"));
+        return new DefaultCurieProvider(CURIE_NAMESPACE, new UriTemplate("https://en.wikipedia.org/wiki/{rel}"));
     }
 
     @Bean

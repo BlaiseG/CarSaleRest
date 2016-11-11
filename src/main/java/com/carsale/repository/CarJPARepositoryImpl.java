@@ -1,8 +1,8 @@
 package com.carsale.repository;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import com.carsale.model.Car;
@@ -14,8 +14,8 @@ public class CarJPARepositoryImpl implements CarJPARepositoryCustom {
 	CarRepository carRepository;
 
 	@Override
-	public List<Car> findAllCarsByModelNameCustom(String modelName) {
-		return carRepository.findAllCarsByModelName(modelName);
+	public Page<Car> findAllCarsByModelNameCustom(String modelName, Pageable pageable) {
+		return carRepository.findAllCarsByModelName(modelName, pageable);
 	}
 
 }
